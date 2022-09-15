@@ -12,8 +12,7 @@ public class SortingEventArgs<T> : EventArgs
 }
 public  class Sorting<T>
 {
-    public MyList<int> mylist;
-
+    
     public event EventHandler SortMethods;
         public void Sort(MyList <T> list)
         {
@@ -27,7 +26,3 @@ public  class Sorting<T>
         }
 }
 
-class SortingMethods
-{
-
-}

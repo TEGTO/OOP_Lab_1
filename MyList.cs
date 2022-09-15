@@ -5,12 +5,13 @@ using System.Collections.Generic;
 namespace OOP_Lab_1
 {
 
-    public class MyList<T>
+    public class MyList<T> 
     {
-        public int lenght { get; set; }
-        private class Node
+       
+        public class Node
         {
-           
+
+            private T data;
             public Node(T t)
             {
                 next = null;
@@ -22,34 +23,58 @@ namespace OOP_Lab_1
             {
                 get { return next; }
                 set { next = value; }
+               
             }
-
-          
-            private T data;
-
-         
+           
             public T Data
             {
                 get { return data; }
                 set { data = value; }
             }
-        }
 
+            
+        }
+        
+        public int Lenght { get; set; }
         private Node? head;
+        public T this[int i]
+        {
+            get 
+            {
+                int it = 0;
+                Node? current = head;
+                while (it != i)
+                {
+                    current = current.Next;
+                    it++;
+                }
+                return current.Data;
+            }
+            set
+            {
+                int it = 0;
+                Node? current = head;
+                while (it != i)
+                {
+                    current = current.Next;
+                    it++;
+                }
+                current.Data = value;
+            }
+        }
        
-      
         public MyList()
         {
             head = null;
         }
-        
 
+       
         public void AddHead(T t)
         {
             Node n = new Node(t);
             n.Next = head;
             head = n;
-            lenght++;
+            Lenght++;
         }
 
         public IEnumerator<T> GetEnumerator()
