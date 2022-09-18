@@ -7,9 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="Button1" Content="Add" HorizontalAlignment="Left" Margin="63,59,0,0" VerticalAlignment="Top" Height="32" Width="107" Click="Button_Click"/>
+        <Button x:Name="Button1" Content="Add Element" HorizontalAlignment="Left" Margin="63,59,0,0" VerticalAlignment="Top" Height="32" Width="107" Click="Button_Click"/>
         <Label x:Name="Label1" Content="" HorizontalAlignment="Center" Margin="0,59,0,0" VerticalAlignment="Top" Height="111" Width="362"/>
-        <Button Content="&#xD;&#xA;Print List&#xD;&#xA;" HorizontalAlignment="Left" Margin="63,201,0,0" VerticalAlignment="Top" Height="64" Width="119" Click="Button_Click_1"/>
+        <Button Content="&#xD;&#xA;Print List&#xD;&#xA;" HorizontalAlignment="Left" Margin="63,106,0,0" VerticalAlignment="Top" Height="46" Width="107" Click="Button_Click_1"/>
+        <Button Content="Insertion Sort&#xD;&#xA;&#xA;" HorizontalAlignment="Left" Margin="69,270,0,0" VerticalAlignment="Top" Height="26" Width="95" Click="Button_Click_2"/>
+        <Button x:Name="QuickSortButton" Content="Quick Sort" HorizontalAlignment="Left" Margin="203,270,0,0" VerticalAlignment="Top" Height="26" Width="95" Click="Button_Click_3"/>
+        <Button x:Name="MergeSort_Button" Content="Merge Sort" HorizontalAlignment="Left" Margin="69,319,0,0" VerticalAlignment="Top" Height="26" Width="95" Click="Button_Click_4"/>
 
     </Grid>
 </Window>

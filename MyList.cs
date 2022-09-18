@@ -15,17 +15,20 @@ namespace OOP_Lab_1
             public Node(T t)
             {
                 next = null;
+          
                 data = t;
             }
 
             private Node? next;
+           
             public Node? Next
             {
                 get { return next; }
                 set { next = value; }
-               
+
             }
-           
+            
+
             public T Data
             {
                 get { return data; }
@@ -41,7 +44,8 @@ namespace OOP_Lab_1
         {
             get 
             {
-                int it = 0;
+               
+                int it = 0 ;
                 Node? current = head;
                 while (it != i)
                 {
@@ -52,6 +56,7 @@ namespace OOP_Lab_1
             }
             set
             {
+             
                 int it = 0;
                 Node? current = head;
                 while (it != i)
@@ -72,8 +77,28 @@ namespace OOP_Lab_1
         public void AddHead(T t)
         {
             Node n = new Node(t);
-            n.Next = head;
-            head = n;
+            if (Lenght==0)
+            {
+                head = n;
+             
+            }
+            else
+            {
+                Node? current = head;
+
+                while (current != null)
+                {
+                    if (current.Next == null)
+                    {
+                        current.Next = n;
+                        break;
+                    }
+                    current=current.Next;
+                    
+                   
+                }
+              
+            }
             Lenght++;
         }
 

@@ -46,5 +46,28 @@ namespace OOP_Lab_1
                 Label1.Content += iterator % 10 == 0 ? "\n " : "";
             }
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            var insertion = new Insertion<int>();
+            sortingMethods.SortMethods += insertion.Sort;
+            sortingMethods.Sort(listToSort);
+            sortingMethods.SortMethods -= insertion.Sort;
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            var quickSort = new QuickSort<int>();
+            sortingMethods.SortMethods += quickSort.Sort;
+            sortingMethods.Sort(listToSort);
+            sortingMethods.SortMethods -= quickSort.Sort;
+        }
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            var mergeSort = new MergeSort<int>();
+            sortingMethods.SortMethods += mergeSort.Sort;
+            sortingMethods.Sort(listToSort);
+            sortingMethods.SortMethods -= mergeSort.Sort;
+        }
     }
 }
