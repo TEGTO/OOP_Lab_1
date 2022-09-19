@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 
 namespace OOP_Lab_1
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window 
     {
         MyList<int> listToSort = new MyList<int> { };
         Sorting<int> sortingMethods = new Sorting <int> (); 
@@ -23,19 +23,38 @@ namespace OOP_Lab_1
         {
             InitializeComponent();
         }
-           
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        //public delegate void DelegateSort(object source, SortingEventArgs<int> arg);
+        private void Button_AddElement(object sender, RoutedEventArgs e)
         {
            
             Random random = new Random();
             int randomNumber = random.Next(100);
             listToSort.AddHead(randomNumber);
             Label1.Content += " "+randomNumber.ToString();
-            Label1.Content += listToSort.Lenght % 10 == 0 ? "\n" : "";
+            Label1.Content += listToSort.Length % 10 == 0 ? "\n" : "";
           
         }
+        private void Button_ShuffleList(object sender, RoutedEventArgs e)
+        {
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+            Random random = new Random();
+        
+            for (int i = 0; i < listToSort.Length; i++)
+            {
+                listToSort[i]= random.Next(100);
+            }
+
+            printList();
+        }
+        void subscribeSortMethod(SortMethod<int> foo)
+        {
+            sortingMethods.SortMethods += foo.Sort;
+            sortingMethods.Sort(listToSort);
+            sortingMethods.SortMethods -= foo.Sort;
+            printList();
+        }
+        void printList()
         {
             Label1.Content = " ";
             int iterator = 0;
@@ -46,28 +65,40 @@ namespace OOP_Lab_1
                 Label1.Content += iterator % 10 == 0 ? "\n " : "";
             }
         }
+        private void Button_PrintList(object sender, RoutedEventArgs e)
+        {
+            printList();
+        }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void Button_InsertionSort(object sender, RoutedEventArgs e)
         {
             var insertion = new Insertion<int>();
-            sortingMethods.SortMethods += insertion.Sort;
-            sortingMethods.Sort(listToSort);
-            sortingMethods.SortMethods -= insertion.Sort;
+            subscribeSortMethod(insertion);
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private void Button_QuickSort(object sender, RoutedEventArgs e)
         {
             var quickSort = new QuickSort<int>();
-            sortingMethods.SortMethods += quickSort.Sort;
-            sortingMethods.Sort(listToSort);
-            sortingMethods.SortMethods -= quickSort.Sort;
+            subscribeSortMethod(quickSort);
         }
-        private void Button_Click_4(object sender, RoutedEventArgs e)
+        private void Button_MergeSort(object sender, RoutedEventArgs e)
         {
             var mergeSort = new MergeSort<int>();
-            sortingMethods.SortMethods += mergeSort.Sort;
-            sortingMethods.Sort(listToSort);
-            sortingMethods.SortMethods -= mergeSort.Sort;
+            subscribeSortMethod(mergeSort);
         }
+
+        private void Button_BubbleSort(object sender, RoutedEventArgs e)
+        {
+            var bubbleSort = new BubbleSort<int>();
+            subscribeSortMethod(bubbleSort);
+        }
+
+        private void Button_SelectionSort(object sender, RoutedEventArgs e)
+        {
+            var selectionSort = new SelectionSort<int>();
+            subscribeSortMethod(selectionSort);
+        }
+
+      
     }
 }

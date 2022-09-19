@@ -13,7 +13,7 @@ public class SortingEventArgs<T> : EventArgs
 public  class Sorting<T>
 {
     
-    public event EventHandler<SortingEventArgs<T>> SortMethods;
+        public event EventHandler<SortingEventArgs<T>> SortMethods;
         public void Sort(MyList <T> list)
         {
             StartSorting(list);

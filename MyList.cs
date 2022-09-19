@@ -38,7 +38,7 @@ namespace OOP_Lab_1
             
         }
         
-        public int Lenght { get; set; }
+        public int Length { get; set; }
         private Node? head;
         public T this[int i]
         {
@@ -77,7 +77,7 @@ namespace OOP_Lab_1
         public void AddHead(T t)
         {
             Node n = new Node(t);
-            if (Lenght==0)
+            if (Length==0)
             {
                 head = n;
              
@@ -99,7 +99,7 @@ namespace OOP_Lab_1
                 }
               
             }
-            Lenght++;
+            Length++;
         }
 
         public IEnumerator<T> GetEnumerator()

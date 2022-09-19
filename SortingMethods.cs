@@ -5,30 +5,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-class Insertion <T> where T : IComparable
+interface SortMethod<T> 
 {
-     public void Sort(object source , SortingEventArgs<T> arg)
+    public void Sort(object source, SortingEventArgs<T> arg);
+}
+
+class Insertion<T> : SortMethod<T> where T: IComparable
+{
+     public void Sorting(MyList<T> arr)
     {
         
-        int n = arg.mylist.Lenght;
+        int n = arr.Length;
        for (int i = 1; i < n; ++i)
         {
-            var key = arg.mylist[i];
+            var key = arr[i];
             int j = i - 1;
       
-            while (j >= 0 && key.CompareTo(arg.mylist[j]) < 0)
+            while (j >= 0 && key.CompareTo(arr[j]) < 0)
             {
-             
-                arg.mylist[j + 1] = arg.mylist[j];
+
+                arr[j + 1] = arr[j];
                 j = j - 1;
             }
-            arg.mylist[j + 1] = key;
+            arr[j + 1] = key;
         }
       
     }
+    public void Sort(object source, SortingEventArgs<T> arg)
+    {
+        Sorting(arg.mylist);
+
+    }
+
 }
-class QuickSort<T> where T: IComparable
+class QuickSort<T> : SortMethod<T> where T : IComparable
 {
 
  
@@ -70,13 +80,13 @@ class QuickSort<T> where T: IComparable
 
     public void Sort(object source, SortingEventArgs<T> arg)
     {
-         Sorting(arg.mylist, 0, arg.mylist.Lenght - 1);
+         Sorting(arg.mylist, 0, arg.mylist.Length - 1);
         
     }
 }
 
 
-class MergeSort<T> where T : IComparable
+class MergeSort<T> : SortMethod<T> where T : IComparable
 {
     void Merge(MyList<T> arr, int l, int m, int r)
     {
@@ -122,20 +132,74 @@ class MergeSort<T> where T : IComparable
         }
     }
 
-    void sorting(MyList<T> arr, int l, int r)
+    void Sorting(MyList<T> arr, int l, int r)
     {
         if (l < r)
         {
 
             int m = l + (r - l) / 2;
 
-            sorting(arr, l, m);
-            sorting(arr, m + 1, r);
+            Sorting(arr, l, m);
+            Sorting(arr, m + 1, r);
             Merge(arr, l, m, r);
         }
     }
    public void Sort(object source, SortingEventArgs<T> arg)
     {
-        sorting(arg.mylist, 0, arg.mylist.Lenght - 1);
+        Sorting(arg.mylist, 0, arg.mylist.Length - 1);
     }
+}
+
+
+class BubbleSort<T> : SortMethod<T> where T : IComparable
+{
+     void bubbleSort(MyList<T> arr)
+    {
+        int n = arr.Length;
+        for (int i = 0; i < n - 1; i++)
+            for (int j = 0; j < n - i - 1; j++)
+                if (arr[j].CompareTo(arr[j+1]) >0)
+                {
+                    // swap temp and arr[i]
+                    var temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+    }
+    public void Sort(object source, SortingEventArgs<T> arg)
+    {
+        bubbleSort(arg.mylist);
+    }
+
+
+}
+
+
+class SelectionSort<T> : SortMethod<T> where T : IComparable
+{
+     void Sorting(MyList<T> arr)
+    {
+        int n = arr.Length;
+
+     
+        for (int i = 0; i < n - 1; i++)
+        {
+          
+            int min_idx = i;
+            for (int j = i + 1; j < n; j++)
+                if (arr[j].CompareTo(arr[min_idx]) <0)
+                    min_idx = j;
+
+            var temp = arr[min_idx];
+            arr[min_idx] = arr[i];
+            arr[i] = temp;
+        }
+
+
+    }
+    public void Sort(object source, SortingEventArgs<T> arg)
+    {
+        Sorting(arg.mylist);
+    }
+
 }
