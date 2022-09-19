@@ -17,6 +17,8 @@
         <Button Content="Selection Sort" HorizontalAlignment="Left" Margin="317,270,0,0" VerticalAlignment="Top" Height="26" Width="95" Click="Button_SelectionSort"/>
         <Button x:Name="ShuffleButton" Content="Shuffle List" HorizontalAlignment="Left" Margin="63,98,0,0" VerticalAlignment="Top" Height="32
                 " Width="107" Click="Button_ShuffleList"/>
+        <Button Content="Counting Sort" HorizontalAlignment="Left" Margin="317,319,0,0" VerticalAlignment="Top" Width="95" Height="26" Click="Button_CountingSort"/>
+        <Button Content="Bucket Sort" HorizontalAlignment="Left" Margin="437,319,0,0" VerticalAlignment="Top" Width="95" RenderTransformOrigin="0.458,0.558" Height="26" Click="Button_BucketSort"/>
 
     </Grid>
 </Window>

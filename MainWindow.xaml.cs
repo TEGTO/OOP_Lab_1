@@ -99,6 +99,16 @@ namespace OOP_Lab_1
             subscribeSortMethod(selectionSort);
         }
 
-      
+        private void Button_CountingSort(object sender, RoutedEventArgs e)
+        {
+            var countingSort = new CountingSort<int>();
+            subscribeSortMethod(countingSort);
+        }
+
+        private void Button_BucketSort(object sender, RoutedEventArgs e)
+        {
+            var bucketSort = new BucketSort<int>();
+            subscribeSortMethod(bucketSort);
+        }
     }
 }

@@ -203,3 +203,82 @@ class SelectionSort<T> : SortMethod<T> where T : IComparable
     }
 
 }
+
+
+
+class CountingSort<T> : SortMethod<T> where T : IComparable
+{
+
+     void Sorting(MyList<T> arr)
+    {
+        int n = arr.Length;
+
+
+        T[] output = new T[n];
+
+        int [] count = new int[256] ;
+
+
+        for (int i = 0; i < n; ++i)
+            ++count[(int)Convert.ChangeType(arr[i], typeof(T))];
+
+        for (int i = 1; i <= 255; ++i)
+            count[i] += count[i - 1];
+
+
+        for (int i = n - 1; i >= 0; i--)
+        {
+            output[count[(int)Convert.ChangeType(arr[i], typeof(T))] - 1] = arr[i];
+            --count[(int)Convert.ChangeType(arr[i], typeof(T))];
+        }
+
+
+        for (int i = 0; i < n; ++i)
+            arr[i] = output[i];
+    }
+    public void Sort(object source, SortingEventArgs<T> arg)
+    {
+       
+        Sorting(arg.mylist);
+    }
+   
+}
+
+class BucketSort<T> : SortMethod<T> where T : IComparable
+{
+     void Sorting(MyList<T> arr)
+    {
+        int n = arr.Length;
+        if (n <= 0)
+            return;
+
+       List<T>[] buckets = new List<T>[n];
+
+        for (int i = 0; i < n; i++)
+        {
+            buckets[i] = new List<T>();
+        }
+        for (int i = 0; i < n; i++)
+        {
+        float idx = n / 2;
+          buckets[(int)idx].Add(arr[i]);
+        }  
+        for (int i = 0; i < n; i++)
+        {
+            buckets[i].Sort();
+        }
+        int index = 0;
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < buckets[i].Count; j++)
+            {
+                arr[index++] = buckets[i][j];
+            }
+        }
+    }
+    public void Sort(object source, SortingEventArgs<T> arg)
+    {
+
+        Sorting(arg.mylist);
+    }
+}
