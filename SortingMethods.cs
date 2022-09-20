@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-interface SortMethod<T> 
+interface SortMethod<T> where T : IComparable
 {
     public void Sort(object source, SortingEventArgs<T> arg);
 }

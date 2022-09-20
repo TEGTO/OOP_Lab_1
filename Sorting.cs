@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OOP_Lab_1;
-public class SortingEventArgs<T> : EventArgs
+public class SortingEventArgs<T> : EventArgs where T : IComparable
 {
     public MyList<T> mylist;
    
 
 }
-public  class Sorting<T>
+public  class Sorting<T> where T : IComparable
 {
     
         public event EventHandler<SortingEventArgs<T>> SortMethods;

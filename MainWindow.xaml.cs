@@ -65,6 +65,7 @@ namespace OOP_Lab_1
                 Label1.Content += iterator % 10 == 0 ? "\n " : "";
             }
         }
+        
         private void Button_PrintList(object sender, RoutedEventArgs e)
         {
             printList();
