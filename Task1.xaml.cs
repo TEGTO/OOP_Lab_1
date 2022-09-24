@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 
 namespace OOP_Lab_1
 {
-    public partial class MainWindow : Window 
+    public partial class Task1 : Window 
     {
         MyList<int> listToSort = new MyList<int> { };
         Sorting<int> sortingMethods = new Sorting <int> (); 
-        public MainWindow()
+        public Task1()
         {
             InitializeComponent();
         }
@@ -32,7 +32,7 @@ namespace OOP_Lab_1
             int randomNumber = random.Next(100);
             listToSort.AddHead(randomNumber);
             Label1.Content += " "+randomNumber.ToString();
-            Label1.Content += listToSort.Length % 10 == 0 ? "\n" : "";
+            Label1.Content += listToSort.Length % 20 == 0 ? "\n" : "";
           
         }
         private void Button_ShuffleList(object sender, RoutedEventArgs e)
@@ -45,16 +45,16 @@ namespace OOP_Lab_1
                 listToSort[i]= random.Next(100);
             }
 
-            printList();
+            PrintList();
         }
-        void subscribeSortMethod(SortMethod<int> foo)
+        void SubscribeSortMethod(SortMethod<int> foo)
         {
             sortingMethods.SortMethods += foo.Sort;
             sortingMethods.Sort(listToSort);
             sortingMethods.SortMethods -= foo.Sort;
-            printList();
+            PrintList();
         }
-        void printList()
+        void PrintList()
         {
             Label1.Content = " ";
             int iterator = 0;
@@ -62,54 +62,63 @@ namespace OOP_Lab_1
             {
                 Label1.Content += " " + item;
                 iterator++;
-                Label1.Content += iterator % 10 == 0 ? "\n " : "";
+                Label1.Content += iterator % 20 == 0 ? "\n " : "";
             }
         }
         
         private void Button_PrintList(object sender, RoutedEventArgs e)
         {
-            printList();
+            PrintList();
         }
 
         private void Button_InsertionSort(object sender, RoutedEventArgs e)
         {
             var insertion = new Insertion<int>();
-            subscribeSortMethod(insertion);
+            SubscribeSortMethod(insertion);
         }
 
         private void Button_QuickSort(object sender, RoutedEventArgs e)
         {
             var quickSort = new QuickSort<int>();
-            subscribeSortMethod(quickSort);
+            SubscribeSortMethod(quickSort);
         }
         private void Button_MergeSort(object sender, RoutedEventArgs e)
         {
             var mergeSort = new MergeSort<int>();
-            subscribeSortMethod(mergeSort);
+            SubscribeSortMethod(mergeSort);
         }
 
         private void Button_BubbleSort(object sender, RoutedEventArgs e)
         {
             var bubbleSort = new BubbleSort<int>();
-            subscribeSortMethod(bubbleSort);
+            SubscribeSortMethod(bubbleSort);
         }
 
         private void Button_SelectionSort(object sender, RoutedEventArgs e)
         {
             var selectionSort = new SelectionSort<int>();
-            subscribeSortMethod(selectionSort);
+            SubscribeSortMethod(selectionSort);
         }
 
         private void Button_CountingSort(object sender, RoutedEventArgs e)
         {
             var countingSort = new CountingSort<int>();
-            subscribeSortMethod(countingSort);
+            SubscribeSortMethod(countingSort);
         }
 
         private void Button_BucketSort(object sender, RoutedEventArgs e)
         {
             var bucketSort = new BucketSort<int>();
-            subscribeSortMethod(bucketSort);
+            SubscribeSortMethod(bucketSort);
         }
+
+        private void Button_OpenTask2(object sender, RoutedEventArgs e)
+        {
+
+            Task2 Task2 = new Task2();
+            Task2.Show();
+        }
+
+        
     }
 }
