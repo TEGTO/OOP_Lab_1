@@ -42,8 +42,10 @@ namespace OOP_Lab_1
             double[] angles = new double[3] { FirstAngle, ThirdAngle, SecondAngle };
             if (angles.Sum()!=180)         
                 return (int)TriangleTypes.InvalidType;
-       
-  
+
+            double nullCheck = Array.Find(sides, x => x == 0);
+            if (nullCheck == 0) return (int)QuadrilateralTypes.InvalidType;
+
             if (sides.Max()>= (sides.Sum()- sides.Max())) return (int)TriangleTypes.InvalidType;
 
             angles = angles.Distinct().ToArray();
@@ -102,6 +104,8 @@ namespace OOP_Lab_1
             if (angles.Sum() != 360|| angles.Max()>=180)      
                 return (int)QuadrilateralTypes.InvalidType;
             if (sides.Max() > (sides.Sum() - sides.Max())) return (int)QuadrilateralTypes.InvalidType;
+            double nullCheck = Array.Find(sides, x => x == 0);
+            if(nullCheck == 0) return (int)QuadrilateralTypes.InvalidType;
             var duplicates = sides.GroupBy(x => x).Where(g => g.Count() == 3).Select(y => y.Key).ToArray();
             angles = angles.Distinct().ToArray();
             sides = sides.Distinct().ToArray();
@@ -198,5 +202,20 @@ namespace OOP_Lab_1
             }
             return 0;
         }
+    }
+
+
+    static class Pentagon
+    {
+        static public double Side { get; set; } = 0;
+        static public float Perimeter() =>(float) (5 * Side);
+        static public float Area() => (float) ((5 * Math.Pow(Side, 2) )/ (4 * Math.Tan(Math.PI / 180 * 36)));
+        
+    }
+    static class Circle
+    {
+        static public double Radius { get; set; } = 0;
+        static public float Perimeter() => (float)(Math.PI*2 * Radius);
+        static public float Area() =>(float)(Math.PI * Math.Pow(Radius,2));
     }
 }

@@ -1,9 +1,10 @@
 ﻿<Window x:Class="OOP_Lab_1.Task1"
+         
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-         xmlns:gif="http://wpfanimatedgif.codeplex.com"
+       
         xmlns:local="clr-namespace:OOP_Lab_1"
         mc:Ignorable="d"
         Title="Task1" Height="450" Width="800">
@@ -13,19 +14,19 @@
             <ColumnDefinition Width="31*"/>
             <ColumnDefinition Width="369*"/>
         </Grid.ColumnDefinitions>
-      
-        <Button x:Name="AddElementButton" Content="Add Element" HorizontalAlignment="Left" Margin="1,59,0,0" VerticalAlignment="Top" Height="32" Width="107" Click="Button_AddElement" Grid.Column="1"/>
+       
+        <Button x:Name="AddElementButton" Content="Add Element" HorizontalAlignment="Left" Margin="1,59,0,0" VerticalAlignment="Top" Height="32" Width="107" Click="Button_AddElement" Grid.Column="1" FontWeight="Bold"/>
         <Label x:Name="Label1" Content="" HorizontalAlignment="Left" Margin="157,59,0,0" VerticalAlignment="Top" Height="111" Width="362" Foreground="Black" Background="#FFE8E1E1" Grid.Column="1"/>
-        <Button Content="&#xD;&#xA;Print List&#xD;&#xA;" HorizontalAlignment="Left" Margin="1,148,0,0" VerticalAlignment="Top" Height="46" Width="107" Click="Button_PrintList" RenderTransformOrigin="0.512,0.666" Grid.Column="1"/>
-        <Button Content="Insertion Sort&#xD;&#xA;&#xA;" HorizontalAlignment="Left" Margin="7,270,0,0" VerticalAlignment="Top" Height="26" Width="95" Click="Button_InsertionSort" Grid.Column="1"/>
-        <Button x:Name="QuickSortButton" Content="Quick Sort" HorizontalAlignment="Left" Margin="141,270,0,0" VerticalAlignment="Top" Height="26" Width="95" Click="Button_QuickSort" Grid.Column="1"/>
-        <Button x:Name="MergeSort_Button" Content="Merge Sort" HorizontalAlignment="Left" Margin="7,319,0,0" VerticalAlignment="Top" Height="26" Width="95" Click="Button_MergeSort" Grid.Column="1"/>
-        <Button Content="Bubble Sort&#xD;&#xA;" HorizontalAlignment="Left" Margin="141,319,0,0" VerticalAlignment="Top" Height="26" Width="95" Click="Button_BubbleSort" Grid.Column="1"/>
-        <Button Content="Selection Sort" HorizontalAlignment="Left" Margin="255,270,0,0" VerticalAlignment="Top" Height="26" Width="95" Click="Button_SelectionSort" Grid.Column="1"/>
+        <Button Content="Print List" HorizontalAlignment="Left" Margin="1,148,0,0" VerticalAlignment="Top" Height="46" Width="107" Click="Button_PrintList" RenderTransformOrigin="0.512,0.666" Grid.Column="1" FontWeight="Bold"/>
+        <Button Content="Insertion Sort" HorizontalAlignment="Left" Margin="7,270,0,0" VerticalAlignment="Top" Height="26" Width="95" Click="Button_InsertionSort" Grid.Column="1" FontWeight="Bold"/>
+        <Button x:Name="QuickSortButton" Content="Quick Sort" HorizontalAlignment="Left" Margin="141,270,0,0" VerticalAlignment="Top" Height="26" Width="95" Click="Button_QuickSort" Grid.Column="1" FontWeight="Bold"/>
+        <Button x:Name="MergeSort_Button" Content="Merge Sort" HorizontalAlignment="Left" Margin="7,319,0,0" VerticalAlignment="Top" Height="26" Width="95" Click="Button_MergeSort" Grid.Column="1" FontWeight="Bold"/>
+        <Button Content="Bubble Sort" HorizontalAlignment="Left" Margin="141,319,0,0" VerticalAlignment="Top" Height="26" Width="95" Click="Button_BubbleSort" Grid.Column="1" FontWeight="Bold"/>
+        <Button Content="Selection Sort" HorizontalAlignment="Left" Margin="255,270,0,0" VerticalAlignment="Top" Height="26" Width="95" Click="Button_SelectionSort" Grid.Column="1" FontWeight="Bold"/>
         <Button x:Name="ShuffleButton" Content="Shuffle List" HorizontalAlignment="Left" Margin="1,98,0,0" VerticalAlignment="Top" Height="32
-                " Width="107" Click="Button_ShuffleList" Grid.Column="1"/>
-        <Button Content="Counting Sort" HorizontalAlignment="Left" Margin="255,319,0,0" VerticalAlignment="Top" Width="95" Height="26" Click="Button_CountingSort" Grid.Column="1"/>
-        <Button Content="Bucket Sort" HorizontalAlignment="Left" Margin="375,319,0,0" VerticalAlignment="Top" Width="95" RenderTransformOrigin="0.458,0.558" Height="26" Click="Button_BucketSort" Grid.Column="1"/>
+                " Width="107" Click="Button_ShuffleList" Grid.Column="1" FontWeight="Bold"/>
+        <Button Content="Counting Sort" HorizontalAlignment="Left" Margin="255,319,0,0" VerticalAlignment="Top" Width="95" Height="26" Click="Button_CountingSort" Grid.Column="1" FontWeight="Bold"/>
+        <Button Content="Bucket Sort" HorizontalAlignment="Left" Margin="375,319,0,0" VerticalAlignment="Top" Width="95" RenderTransformOrigin="0.458,0.558" Height="26" Click="Button_BucketSort" Grid.Column="1" FontWeight="Bold"/>
         <Button Content="Task2" HorizontalAlignment="Left" Margin="581,66,0,0" VerticalAlignment="Top" Height="64" Width="124" Background="#FFF72121" Foreground="White" BorderBrush="Black" Click="Button_OpenTask2" FontFamily="Arial Black" Grid.Column="1"/>
 
 

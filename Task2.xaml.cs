@@ -11,7 +11,7 @@ namespace OOP_Lab_1
 
     enum CheckBoxTypes
     {
-        Triangle = 1, Quadrilateral
+        Triangle = 1, Quadrilateral,Pentagon,Circle
     }
     public partial class Task2 : Window
     {
@@ -25,38 +25,107 @@ namespace OOP_Lab_1
 
         private void UncheckMainMethod()
         {
-            RectangleCanvas.Visibility = Visibility.Hidden;
-            checkBoxType = 0;
+           
             MainFigureCanvas.Visibility = Visibility.Hidden;
-            TriangleCanvas.Visibility = Visibility.Hidden;
+           
+            if ((int)CheckBoxTypes.Triangle != checkBoxType)
+            {
+                TriangleCheckBox.IsChecked = false;
+               
+            }
+            else
+            {        
+                TriangleCanvas.IsEnabled = true;
+                TriangleCanvas.Visibility = Visibility.Visible;
+            }
+            if ((int)CheckBoxTypes.Quadrilateral != checkBoxType)
+            {
+                RectangleCheckBox.IsChecked = false;
+
+            }
+            else
+            {        
+                RectangleCanvas.IsEnabled = true;
+                RectangleCanvas.Visibility = Visibility.Visible;
+            }
+            if ((int)CheckBoxTypes.Pentagon != checkBoxType)
+            {
+                PentagonCheckBox.IsChecked = false;
+            }
+            else
+            {
+               PentagonCanvas.IsEnabled = true;
+                PentagonCanvas.Visibility = Visibility.Visible;
+            }
+            if ((int)CheckBoxTypes.Circle != checkBoxType)
+            {
+                СircleCheckBox.IsChecked = false;
+            }
+            else
+            {
+                СircleCanvas.IsEnabled = true;
+                СircleCanvas.Visibility = Visibility.Visible;
+            }
+
         }
         private void TriangleCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            if (RectangleCheckBox.IsChecked == true)RectangleCheckBox_Unchecked(sender, e);
-            TriangleCanvas.IsEnabled = true;
-            TriangleCanvas.Visibility = Visibility.Visible;
-            checkBoxType = (int)CheckBoxTypes.Triangle;
-            
+           
+           checkBoxType = (int)CheckBoxTypes.Triangle;
+            UncheckMainMethod();
           
+
+
+
         }
         private void TriangleCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            TriangleCheckBox.IsChecked = false;
             TriangleCanvas.IsEnabled = false;
-            UncheckMainMethod();
+            TriangleCanvas.Visibility = Visibility.Hidden;
         }
         private void RectangleCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            if (TriangleCheckBox.IsChecked == true) TriangleCheckBox_Unchecked(sender, e);
-            RectangleCanvas.IsEnabled = true;
-            RectangleCanvas.Visibility = Visibility.Visible;
+            
             checkBoxType = (int)CheckBoxTypes.Quadrilateral;
+            UncheckMainMethod();
+          
+
+
         }
         private void RectangleCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            RectangleCheckBox.IsChecked = false;
             RectangleCanvas.IsEnabled = false;
+            RectangleCanvas.Visibility = Visibility.Hidden;
+            MainRectangle.Visibility = Visibility.Hidden;
+         
+        }
+
+        private void PentagonCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            checkBoxType = (int)CheckBoxTypes.Pentagon;
             UncheckMainMethod();
+           
+        }
+        private void PentagonCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            PentagonCanvas.IsEnabled = false;
+            PentagonCanvas.Visibility = Visibility.Hidden;
+
+
+        }
+        private void СircleCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            checkBoxType = (int)CheckBoxTypes.Circle;
+            UncheckMainMethod();
+
+        }
+
+        private void СircleCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            СircleCanvas.IsEnabled = false;
+            СircleCanvas.Visibility = Visibility.Hidden;
+            MainCircle.Visibility = Visibility.Hidden;
+
         }
         private void FigureTypePrint(int FigureType)
         {
@@ -99,6 +168,15 @@ namespace OOP_Lab_1
 
         private void DrawMainFigure(int FigureType)
         {
+            MainFigure.Fill = Brushes.Red;
+            Quadrilateral.A = Quadrilateral.A > 20 ? 20 : Quadrilateral.A;
+            Quadrilateral.B = Quadrilateral.B > 20 ? 20 : Quadrilateral.B;
+            Quadrilateral.C = Quadrilateral.C > 20 ? 20 : Quadrilateral.C;
+            Quadrilateral.D = Quadrilateral.D > 20 ? 20 : Quadrilateral.D;
+            Triangle.FirstSide = Triangle.FirstSide > 20 ? 20 : Triangle.FirstSide;
+            Triangle.SecondSide = Triangle.SecondSide > 20 ? 20 : Triangle.SecondSide;
+            Triangle.ThirdSide = Triangle.ThirdSide > 20 ? 20 : Triangle.ThirdSide;
+
             switch (checkBoxType)
             {
                 case (int)CheckBoxTypes.Triangle:
@@ -106,21 +184,27 @@ namespace OOP_Lab_1
                     {
                         case (int)TriangleTypes.Scalene:
                             MainFigure.Points = new PointCollection() { new Point(0, 200), new Point(200, 200), new Point(50, 50) };
+                           
                             break;
                         case (int)TriangleTypes.Equilateral:
-                            MainFigure.Points = new PointCollection() { new Point(0, 200), new Point(400, 200), new Point(200, 0) };
+                            MainFigure.Points = new PointCollection() { new Point(0  -(Triangle.FirstSide * 3), 250 + (Triangle.FirstSide * 3)), 
+                                new Point(200 + (Triangle.FirstSide * 3), 250 + (Triangle.FirstSide * 3)), new Point(100, 50-(Triangle.FirstSide * 3)) };
+                            MainFigure.Fill = Brushes.Blue;
                             break;
 
                         case (int)TriangleTypes.Isosceles:
-                            MainFigure.Points = new PointCollection() { new Point(0, 200), new Point(400, 200), new Point(200, 50) };
+                            MainFigure.Points = new PointCollection() { new Point(50 - (Triangle.FirstSide * 3), 250 + (Triangle.SecondSide * 3)), new Point(150 + (Triangle.FirstSide * 3), 250 + (Triangle.SecondSide * 3)), new Point(100, 100 - (Triangle.SecondSide * 3)) };
+                            MainFigure.Fill = Brushes.Blue;
                             break;
                         case (int)TriangleTypes.Right:
-                            MainFigure.Points = new PointCollection() { new Point(0, 200), new Point(0, 0), new Point(200, 200) };
+                            MainFigure.Points = new PointCollection() { new Point(0, 250), new Point(0, 50), new Point(200, 250) };
                             break;
                         default:
                             MainFigure.Points = new PointCollection() { new Point(0, 0), new Point(0, 0), new Point(0, 0) };
                             break;
                     }
+                  
+
                     break;
                 case (int)CheckBoxTypes.Quadrilateral:
                     switch (FigureType)
@@ -129,37 +213,63 @@ namespace OOP_Lab_1
                             MainFigure.Points = new PointCollection() { new Point(80, 200), new Point(280, 210), new Point(240, 100), new Point(100, 50) };
                             break;
                         case (int)QuadrilateralTypes.Rectangle:
-                            MainFigure.Points = new PointCollection() { new Point(80, 200), new Point(280, 200), new Point(280, 100), new Point(80, 100) };
+                            MainRectangle.Width = Quadrilateral.B * 10 <= 200 ? Quadrilateral.B * 10 : 200;
+                            MainRectangle.Height = Quadrilateral.A != Quadrilateral.B? Quadrilateral.A*10<200 ? Quadrilateral.A * 10 :200 :
+                                Quadrilateral.C * 10 < 200 ? Quadrilateral.C * 10 : 200;
+                            MainRectangle.Visibility = Visibility.Visible;
                             break;
                         case (int)QuadrilateralTypes.Trapezoid:
-                            MainFigure.Points = new PointCollection() { new Point(80, 200), new Point(280, 200), new Point(240, 0), new Point(120, 0) };
+                            MainFigure.Points = new PointCollection() { new Point(60 - (Quadrilateral.B * 3), 250 + (Quadrilateral.C * 3)), new Point(280 + (Quadrilateral.B * 3), 250 + (Quadrilateral.D * 3)), new Point(240 + (Quadrilateral.A * 3), 50 - (Quadrilateral.D * 3)), new Point(120 - (Quadrilateral.A * 3), 50 - (Quadrilateral.C * 3)) };
+                            MainFigure.Fill = Brushes.Blue;
                             break;
                        case (int)QuadrilateralTypes.TrapezoidRight:
-                            MainFigure.Points = new PointCollection() { new Point(80, 200), new Point(280, 200), new Point(150, 0), new Point(80, 0) };
+                            MainFigure.Points = new PointCollection() { new Point(80, 250 + (Quadrilateral.C * 3)), new Point(280 + (Quadrilateral.B * 3), 250 + (Quadrilateral.D * 3)), new Point(150 + (Quadrilateral.A * 3), 50 -(Quadrilateral.D * 3)), new Point(80 , 50-(Quadrilateral.C * 3)) };
+                            MainFigure.Fill = Brushes.Blue;
                             break;
                         case (int)QuadrilateralTypes.TrapezoidIsosceles:
-                            MainFigure.Points = new PointCollection() { new Point(80, 200), new Point(290, 200), new Point(240, 0), new Point(120, 0) };
+                          
+                            MainFigure.Points = new PointCollection() { new Point(80 - (Quadrilateral.B * 3), 250 + (Quadrilateral.C * 3)), new Point(290 + (Quadrilateral.B * 3), 250 + (Quadrilateral.C * 3)), new Point(240+(Quadrilateral.A * 3), 50 - (Quadrilateral.C * 3)), new Point(120 - (Quadrilateral.A * 3), 50 - (Quadrilateral.C * 3)) };
+
+                            MainFigure.Fill = Brushes.Blue;
                             break;
                         case (int)QuadrilateralTypes.Rhombus:
-                            MainFigure.Points = new PointCollection() { new Point(80, 200), new Point(180, 300), new Point(280, 200), new Point(180, 100) };
+                     
+                            MainFigure.Points = new PointCollection() { new Point(80 - (Quadrilateral.A * 3), 200), new Point(180, 300+ (Quadrilateral.A*3)), new Point(280 + (Quadrilateral.A * 3), 200), new Point(180, 100 - (Quadrilateral.A * 3)) };
+                            MainFigure.Fill =Brushes.Blue;
                             break;
                         case (int)QuadrilateralTypes.Square:
-                            MainFigure.Points = new PointCollection() { new Point(80, 200), new Point(280, 200), new Point(280, 0), new Point(80, 0) };
+                            MainRectangle.Height = MainRectangle.Width = Quadrilateral.B*10<=200? Quadrilateral.B * 10:200;   
+                            MainRectangle.Visibility = Visibility.Visible;
                             break;
                         case (int)QuadrilateralTypes.Parallelogram:
-                            MainFigure.Points = new PointCollection() { new Point(80, 200), new Point(280, 200), new Point(340, 0), new Point(140, 0) };
+                         
+                            MainFigure.Points = new PointCollection() { new Point(80-( Quadrilateral.A*3), 250+( Quadrilateral.C*3)), new Point(280+ (Quadrilateral.A * 3), 250 + (Quadrilateral.C * 3)), new Point(340 + (Quadrilateral.A * 3), 50 - (Quadrilateral.C * 3)), new Point(140 - (Quadrilateral.A * 3), 50 - (Quadrilateral.C * 3)) };
+                            MainFigure.Fill = Brushes.Blue;
                             break;
                         default:
                             MainFigure.Points = new PointCollection() { new Point(0, 0), new Point(0, 0), new Point(0, 0) };
                             break;
                     }
+               
+
                     break;
-                        default:
+                case (int)CheckBoxTypes.Pentagon:
+                    MainFigure.Points = new PointCollection() { new Point(0-(Pentagon.Side*3), 150), new Point(80-(Pentagon.Side*3), 265+(Pentagon.Side*3)), new Point(220+(Pentagon.Side*3), 265+(Pentagon.Side*3)), new Point(300+(Pentagon.Side*3), 150), 
+                        new Point(220+(Pentagon.Side*3), 35-(Pentagon.Side*3)),new Point(80-(Pentagon.Side*3), 35-(Pentagon.Side*3)) };
+                    MainFigure.Fill = Brushes.Blue;
+                    if (Pentagon.Side == 0) MainFigure.Fill = Brushes.Red;
+                    break;
+                case (int)CheckBoxTypes.Circle:
+                   
+                        MainCircle.Height = Circle.Radius*10<=200? Circle.Radius*10:200;
+                        MainCircle.Width = Circle.Radius*10 <= 200 ? Circle.Radius*10 : 200;
+                        MainCircle.Visibility = Visibility.Visible;
+                    break;
+                default:
                     break;
             }
-
-           
             
+
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -204,12 +314,38 @@ namespace OOP_Lab_1
                     FigureTypePrint(Quadrilateral.DefineType());
                     DrawMainFigure(Quadrilateral.DefineType());
                     break;
+                case (int)CheckBoxTypes.Pentagon:
+                    try
+                    {
+                        Pentagon.Side = Convert.ToDouble(Side_Pentagon.Text);
+                       
+                    }
+                    catch (Exception) { }
+                    labelPerimeter.Content = $"P = {Pentagon.Perimeter()}";
+                    labelS.Content = $"S = {Pentagon.Area()}";
+                    labelType.Content = "TYPE = Pentagon";
+                    DrawMainFigure(5);
+                    break;
+                case (int)CheckBoxTypes.Circle:
+                    try
+                    {
+                        Circle.Radius = Convert.ToDouble(Radius_Circle.Text);
+
+                    }
+                    catch (Exception) { }
+                    labelPerimeter.Content = $"P = {Circle.Perimeter()}";
+                    labelS.Content = $"S = {Circle.Area()}";
+                    labelType.Content = "TYPE = Circle";
+                    DrawMainFigure(0);
+                    break;
                 default:
                     break;
-            }
-            MainFigureCanvas.Visibility = Visibility.Visible;
+            } 
+
+                MainFigureCanvas.Visibility = Visibility.Visible;
+            
         }
-    
-        
+
+     
     }
 }
