@@ -43,11 +43,12 @@ namespace OOP_Lab_1
             if (angles.Sum()!=180)         
                 return (int)TriangleTypes.InvalidType;
 
-            double nullCheck = Array.Find(sides, x => x == 0);
-            if (nullCheck == 0) return (int)QuadrilateralTypes.InvalidType;
+         
+            bool check = Array.Exists(sides, x => x == 0);
+            if (check) return (int)TriangleTypes.InvalidType;
 
-            if (sides.Max()>= (sides.Sum()- sides.Max())) return (int)TriangleTypes.InvalidType;
-
+            double maxSide = sides.Max();
+            double [] legs = sides.Where(x => x != maxSide).ToArray();
             angles = angles.Distinct().ToArray();
             sides = sides.Distinct().ToArray();
 
@@ -61,10 +62,20 @@ namespace OOP_Lab_1
                 default:
                     break;
             }     
-            foreach (var item in angles)
+            
+            check = Array.Exists(angles, x => x == 90);
+            if (check)
             {
-                if (item == 90) return (int)TriangleTypes.Right;
+                if (Math.Pow(legs[0],2) + Math.Pow(legs[1], 2) == Math.Pow(maxSide, 2))
+                {
+                    return (int)TriangleTypes.Right;
+                }
+                else return (int)TriangleTypes.InvalidType;
+
+
             }
+             
+          
             return (int)TriangleTypes.Scalene;
         }
         
@@ -104,8 +115,10 @@ namespace OOP_Lab_1
             if (angles.Sum() != 360|| angles.Max()>=180)      
                 return (int)QuadrilateralTypes.InvalidType;
             if (sides.Max() > (sides.Sum() - sides.Max())) return (int)QuadrilateralTypes.InvalidType;
-            double nullCheck = Array.Find(sides, x => x == 0);
-            if(nullCheck == 0) return (int)QuadrilateralTypes.InvalidType;
+
+            bool nullCheck = Array.Exists(sides, x => x == 0);
+            if(nullCheck) return (int)QuadrilateralTypes.InvalidType;
+
             var duplicates = sides.GroupBy(x => x).Where(g => g.Count() == 3).Select(y => y.Key).ToArray();
             angles = angles.Distinct().ToArray();
             sides = sides.Distinct().ToArray();
@@ -158,7 +171,7 @@ namespace OOP_Lab_1
                             if (angles.Contains(90))
                                 return (int)QuadrilateralTypes.TrapezoidRight;
 
-                       else return (int)QuadrilateralTypes.Trapezoid;
+                       return (int)QuadrilateralTypes.Trapezoid;
                       
                        
                     }

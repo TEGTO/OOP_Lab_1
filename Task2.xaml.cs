@@ -22,10 +22,22 @@ namespace OOP_Lab_1
         {
             InitializeComponent();    
         }
+        void ClearTextBoxes()
+        {
+            FirstAngle_Triangle.Text = "";
+            SecondAngle_Triangle.Text = "";
+            ThirdAngle_Triangle.Text = "";
+            CBAngle_Rectangle.Text = "";
+            ACAngle_Rectangle.Text = "";
+            DAAngle_Rectangle.Text = "";
+            BDAngle_Rectangle.Text = "";
+            Side_Pentagon.Text = "";
+            Radius_Circle.Text = "";
+        }
 
         private void UncheckMainMethod()
         {
-           
+            ClearTextBoxes();
             MainFigureCanvas.Visibility = Visibility.Hidden;
            
             if ((int)CheckBoxTypes.Triangle != checkBoxType)
@@ -104,7 +116,7 @@ namespace OOP_Lab_1
         {
             checkBoxType = (int)CheckBoxTypes.Pentagon;
             UncheckMainMethod();
-           
+         
         }
         private void PentagonCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
@@ -134,7 +146,7 @@ namespace OOP_Lab_1
                 case (int)CheckBoxTypes.Triangle:
                     switch (FigureType)
                     {
-                        case (int)TriangleTypes.Scalene: labelType.Content= "TYPE = Scalene Triangle"; break;
+                        case (int)TriangleTypes.Scalene: AnglesIndefined("Scalene Triangle"); break;
                         case (int)TriangleTypes.Equilateral: labelType.Content = "TYPE = Equilateral Triangle"; break;
                         case (int)TriangleTypes.Isosceles: labelType.Content = "TYPE = Isosceles Triangle"; break;
                         case (int)TriangleTypes.Right: labelType.Content = "TYPE = Right Triangle"; break;
@@ -146,7 +158,7 @@ namespace OOP_Lab_1
                 case (int)CheckBoxTypes.Quadrilateral:
                     switch (FigureType)
                     {
-                        case (int)QuadrilateralTypes.FreeQuadrilateral: labelType.Content = "TYPE = Free Quadrilateral"; break;
+                        case (int)QuadrilateralTypes.FreeQuadrilateral: AnglesIndefined("Free Quadrilateral"); break;
                         case (int)QuadrilateralTypes.Rectangle: labelType.Content = "TYPE = Rectangle"; break;
                         case (int)QuadrilateralTypes.Trapezoid: labelType.Content = "TYPE = Trapezoid"; break;
                         case (int)QuadrilateralTypes.TrapezoidRight:labelType.Content = "TYPE = Right Trapezoid";break;
@@ -164,9 +176,7 @@ namespace OOP_Lab_1
             }
           
         }
-        
-
-        private void DrawMainFigure(int FigureType)
+        private void DrawFigure(int FigureType)
         {
             MainFigure.Fill = Brushes.Red;
             Quadrilateral.A = Quadrilateral.A > 20 ? 20 : Quadrilateral.A;
@@ -223,12 +233,15 @@ namespace OOP_Lab_1
                             MainFigure.Fill = Brushes.Blue;
                             break;
                        case (int)QuadrilateralTypes.TrapezoidRight:
-                            MainFigure.Points = new PointCollection() { new Point(80, 250 + (Quadrilateral.C * 3)), new Point(280 + (Quadrilateral.B * 3), 250 + (Quadrilateral.D * 3)), new Point(150 + (Quadrilateral.A * 3), 50 -(Quadrilateral.D * 3)), new Point(80 , 50-(Quadrilateral.C * 3)) };
+                            MainFigure.Points = new PointCollection() { new Point(80, 250 + (Quadrilateral.C * 3)),
+                                new Point(280 + (Quadrilateral.B * 3), 250 + (Quadrilateral.D * 3)), new Point(150 + (Quadrilateral.A * 3), 50 -(Quadrilateral.D * 3)), new Point(80 , 50-(Quadrilateral.C * 3)) };
                             MainFigure.Fill = Brushes.Blue;
                             break;
                         case (int)QuadrilateralTypes.TrapezoidIsosceles:
                           
-                            MainFigure.Points = new PointCollection() { new Point(80 - (Quadrilateral.B * 3), 250 + (Quadrilateral.C * 3)), new Point(290 + (Quadrilateral.B * 3), 250 + (Quadrilateral.C * 3)), new Point(240+(Quadrilateral.A * 3), 50 - (Quadrilateral.C * 3)), new Point(120 - (Quadrilateral.A * 3), 50 - (Quadrilateral.C * 3)) };
+                            MainFigure.Points = new PointCollection() { new Point(80 - (Quadrilateral.B * 3), 250 + (Quadrilateral.C * 3)),
+                                new Point(290 + (Quadrilateral.B * 3), 250 + (Quadrilateral.C * 3)), new Point(240+(Quadrilateral.A * 3), 50 - (Quadrilateral.C * 3)), 
+                                new Point(120 - (Quadrilateral.A * 3), 50 - (Quadrilateral.C * 3)) };
 
                             MainFigure.Fill = Brushes.Blue;
                             break;
@@ -254,21 +267,39 @@ namespace OOP_Lab_1
 
                     break;
                 case (int)CheckBoxTypes.Pentagon:
-                    MainFigure.Points = new PointCollection() { new Point(0-(Pentagon.Side*3), 150), new Point(80-(Pentagon.Side*3), 265+(Pentagon.Side*3)), new Point(220+(Pentagon.Side*3), 265+(Pentagon.Side*3)), new Point(300+(Pentagon.Side*3), 150), 
+                    if (Pentagon.Side!=0)
+                    {
+                        MainFigure.Points = new PointCollection() { new Point(10-(Pentagon.Side*3), 150), new Point(80-(Pentagon.Side*3), 265+(Pentagon.Side*3)), new Point(220+(Pentagon.Side*3), 265+(Pentagon.Side*3)), new Point(290+(Pentagon.Side*3), 150),
                         new Point(220+(Pentagon.Side*3), 35-(Pentagon.Side*3)),new Point(80-(Pentagon.Side*3), 35-(Pentagon.Side*3)) };
-                    MainFigure.Fill = Brushes.Blue;
-                    if (Pentagon.Side == 0) MainFigure.Fill = Brushes.Red;
+                        MainFigure.Fill = Brushes.Blue;
+                    }
+                    else
+                       MainFigure.Points = new PointCollection() { new Point(0, 0), new Point(0, 0), new Point(0, 0) };
+                    
                     break;
                 case (int)CheckBoxTypes.Circle:
                    
                         MainCircle.Height = Circle.Radius*10<=200? Circle.Radius*10:200;
                         MainCircle.Width = Circle.Radius*10 <= 200 ? Circle.Radius*10 : 200;
                         MainCircle.Visibility = Visibility.Visible;
+                       MainFigure.Points = new PointCollection() { new Point(0, 0), new Point(0, 0), new Point(0, 0) };
                     break;
                 default:
                     break;
             }
             
+
+        }
+        void AnglesIndefined(string figure)
+        {
+            labelType.Content = $"TYPE = {figure} (Angles not defined)";
+            FirstAngle_Triangle.Text = "??";
+            SecondAngle_Triangle.Text = "??";
+            ThirdAngle_Triangle.Text = "??";
+            CBAngle_Rectangle.Text= "??";
+            ACAngle_Rectangle.Text= "??";
+            DAAngle_Rectangle.Text = "??";
+            BDAngle_Rectangle.Text= "??";
 
         }
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -292,7 +323,7 @@ namespace OOP_Lab_1
                     labelPerimeter.Content = $"P = {Triangle.Perimeter()}";
                     labelS.Content = $"S = {Triangle.Area()}";
                     FigureTypePrint(Triangle.DefineType());
-                    DrawMainFigure(Triangle.DefineType());
+                    DrawFigure(Triangle.DefineType());
                   
                     break;
 
@@ -312,7 +343,7 @@ namespace OOP_Lab_1
                     labelPerimeter.Content = $"P = {Quadrilateral.Perimeter()}";
                     labelS.Content = $"S = {Quadrilateral.Area()}";
                     FigureTypePrint(Quadrilateral.DefineType());
-                    DrawMainFigure(Quadrilateral.DefineType());
+                    DrawFigure(Quadrilateral.DefineType());
                     break;
                 case (int)CheckBoxTypes.Pentagon:
                     try
@@ -324,7 +355,7 @@ namespace OOP_Lab_1
                     labelPerimeter.Content = $"P = {Pentagon.Perimeter()}";
                     labelS.Content = $"S = {Pentagon.Area()}";
                     labelType.Content = "TYPE = Pentagon";
-                    DrawMainFigure(5);
+                    DrawFigure(5);
                     break;
                 case (int)CheckBoxTypes.Circle:
                     try
@@ -336,7 +367,7 @@ namespace OOP_Lab_1
                     labelPerimeter.Content = $"P = {Circle.Perimeter()}";
                     labelS.Content = $"S = {Circle.Area()}";
                     labelType.Content = "TYPE = Circle";
-                    DrawMainFigure(0);
+                    DrawFigure(0);
                     break;
                 default:
                     break;

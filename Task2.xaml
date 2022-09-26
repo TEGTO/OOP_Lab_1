@@ -3,16 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+     
         xmlns:local="clr-namespace:OOP_Lab_1"
         mc:Ignorable="d"
         Title="Task2" Height="450" Width="800">
     <Grid x:Name="Task2Layout" Background="#FFFDF5BD">
 
-        
+       
         <Label x:Name="labelS" Content="S = " HorizontalAlignment="Left" Margin="85,31,0,0" VerticalAlignment="Top" Height="36" Width="242" FontFamily="Arial" FontSize="18" Grid.ColumnSpan="2" FontWeight="Bold"/>
         <CheckBox x:Name="TriangleCheckBox" Content="Triangle" HorizontalAlignment="Left" Margin="80,149,0,0" VerticalAlignment="Top" Checked="TriangleCheckBox_Checked" Unchecked="TriangleCheckBox_Unchecked" FontWeight="Bold"/>
         <Canvas x:Name="TriangleCanvas" IsEnabled="False" Margin="181,44,-16,130" Visibility="Hidden" Grid.Column="1">
-            <TextBox x:Name="FirstSide_Triangle" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="108" Width="31" Height ="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBox x:Name="FirstSide_Triangle"    Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="108" Width="31" Height ="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <TextBox x:Name="ThirdSide_Triangle" Canvas.Left="98" TextWrapping="Wrap" Canvas.Top="109" Width="31" Height ="20" HorizontalAlignment="Left" VerticalAlignment="Center" />
             <TextBox x:Name="SecondSide_Triangle" Canvas.Left="53" TextWrapping="Wrap" Canvas.Top="108" Width="31" Height ="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Label Content="Side1" Canvas.Top="83" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Canvas.Left="5"/>
@@ -27,7 +28,7 @@
         </Canvas>
 
 
-        <Label x:Name="labelType" Content="TYPE = " HorizontalAlignment="Left" Margin="85,3,0,0" VerticalAlignment="Top" Height="36" Width="297" FontFamily="Arial" FontSize="18" FontWeight="Bold" Grid.ColumnSpan="2"/>
+        <Label x:Name="labelType" Content="TYPE = " HorizontalAlignment="Left" Margin="85,3,0,0" VerticalAlignment="Top" Height="36" Width="485" FontFamily="Arial" FontSize="18" FontWeight="Bold"/>
         <Canvas x:Name="MainFigureCanvas" Margin="323,44,-16,130" Visibility="Hidden" >
             <Rectangle x:Name="MainRectangle" Fill="Blue"  Canvas.Left="122" Canvas.Top="80" />
             <Polygon x:Name="MainFigure" Fill="Red"  Canvas.Left="24" />

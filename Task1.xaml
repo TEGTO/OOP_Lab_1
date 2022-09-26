@@ -4,19 +4,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-       
         xmlns:local="clr-namespace:OOP_Lab_1"
         mc:Ignorable="d"
         Title="Task1" Height="450" Width="800">
-    <Grid Background="#FFFEF7DE">
+    <Grid x:Name="Task1Grid" Background="#FFFEF7DE">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="31*"/>
             <ColumnDefinition Width="369*"/>
         </Grid.ColumnDefinitions>
-       
+
         <Button x:Name="AddElementButton" Content="Add Element" HorizontalAlignment="Left" Margin="1,59,0,0" VerticalAlignment="Top" Height="32" Width="107" Click="Button_AddElement" Grid.Column="1" FontWeight="Bold"/>
-        <Label x:Name="Label1" Content="" HorizontalAlignment="Left" Margin="157,59,0,0" VerticalAlignment="Top" Height="111" Width="362" Foreground="Black" Background="#FFE8E1E1" Grid.Column="1"/>
         <Button Content="Print List" HorizontalAlignment="Left" Margin="1,148,0,0" VerticalAlignment="Top" Height="46" Width="107" Click="Button_PrintList" RenderTransformOrigin="0.512,0.666" Grid.Column="1" FontWeight="Bold"/>
         <Button Content="Insertion Sort" HorizontalAlignment="Left" Margin="7,270,0,0" VerticalAlignment="Top" Height="26" Width="95" Click="Button_InsertionSort" Grid.Column="1" FontWeight="Bold"/>
         <Button x:Name="QuickSortButton" Content="Quick Sort" HorizontalAlignment="Left" Margin="141,270,0,0" VerticalAlignment="Top" Height="26" Width="95" Click="Button_QuickSort" Grid.Column="1" FontWeight="Bold"/>
@@ -28,6 +26,11 @@
         <Button Content="Counting Sort" HorizontalAlignment="Left" Margin="255,319,0,0" VerticalAlignment="Top" Width="95" Height="26" Click="Button_CountingSort" Grid.Column="1" FontWeight="Bold"/>
         <Button Content="Bucket Sort" HorizontalAlignment="Left" Margin="375,319,0,0" VerticalAlignment="Top" Width="95" RenderTransformOrigin="0.458,0.558" Height="26" Click="Button_BucketSort" Grid.Column="1" FontWeight="Bold"/>
         <Button Content="Task2" HorizontalAlignment="Left" Margin="581,66,0,0" VerticalAlignment="Top" Height="64" Width="124" Background="#FFF72121" Foreground="White" BorderBrush="Black" Click="Button_OpenTask2" FontFamily="Arial Black" Grid.Column="1"/>
+        <TextBox x:Name="textBox" Grid.Column="1" HorizontalAlignment="Left" Margin="176,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="324" Height="141" Background="#FFEAEAEA" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Visible" IsReadOnly="True" FontWeight="Bold" FontFamily="Arial"/>
+
+
+
+
 
 
 

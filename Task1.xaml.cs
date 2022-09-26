@@ -17,11 +17,13 @@ namespace OOP_Lab_1
 {
     public partial class Task1 : Window 
     {
+        
         MyList<int> listToSort = new MyList<int> { };
         Sorting<int> sortingMethods = new Sorting <int> (); 
         public Task1()
         {
             InitializeComponent();
+          
         }
 
         //public delegate void DelegateSort(object source, SortingEventArgs<int> arg);
@@ -31,9 +33,9 @@ namespace OOP_Lab_1
             Random random = new Random();
             int randomNumber = random.Next(100);
             listToSort.AddHead(randomNumber);
-            Label1.Content += " "+randomNumber.ToString();
-            Label1.Content += listToSort.Length % 20 == 0 ? "\n" : "";
-          
+            textBox.Text += listToSort.Length<=1? randomNumber.ToString():" " +randomNumber.ToString();
+         
+            
         }
         private void Button_ShuffleList(object sender, RoutedEventArgs e)
         {
@@ -56,13 +58,13 @@ namespace OOP_Lab_1
         }
         void PrintList()
         {
-            Label1.Content = " ";
+            textBox.Text = "";
             int iterator = 0;
             foreach (var item in listToSort)
             {
-                Label1.Content += " " + item;
+                textBox.Text += iterator==0?item: " " + item;
                 iterator++;
-                Label1.Content += iterator % 20 == 0 ? "\n " : "";
+               
             }
         }
         
