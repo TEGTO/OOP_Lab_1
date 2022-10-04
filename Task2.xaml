@@ -3,13 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-     
+       xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
         xmlns:local="clr-namespace:OOP_Lab_1"
         mc:Ignorable="d"
         Title="Task2" Height="450" Width="800">
     <Grid x:Name="Task2Layout" Background="#FFFDF5BD">
 
-       
+        
         <Label x:Name="labelS" Content="S = " HorizontalAlignment="Left" Margin="85,31,0,0" VerticalAlignment="Top" Height="36" Width="242" FontFamily="Arial" FontSize="18" Grid.ColumnSpan="2" FontWeight="Bold"/>
         <CheckBox x:Name="TriangleCheckBox" Content="Triangle" HorizontalAlignment="Left" Margin="80,149,0,0" VerticalAlignment="Top" Checked="TriangleCheckBox_Checked" Unchecked="TriangleCheckBox_Unchecked" FontWeight="Bold"/>
         <Canvas x:Name="TriangleCanvas" IsEnabled="False" Margin="181,44,-16,130" Visibility="Hidden" Grid.Column="1">
@@ -71,7 +71,7 @@
         <Rectangle HorizontalAlignment="Left" Height="31" Margin="94,301,0,0" Stroke="Black" VerticalAlignment="Top" Width="33" Fill="Red"/>
         <Label Content="Static" HorizontalAlignment="Left" Margin="90,275,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <Label Content="Active" HorizontalAlignment="Left" Margin="38,275,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label Content="It's only Figures Examples&#xA;They are incorrect" HorizontalAlignment="Left" Margin="31,332,0,0" VerticalAlignment="Top" Height="60" FontWeight="Bold"/>
+        <Label Content="It's only Figures Examples&#xA;Their sizes are incorrect" HorizontalAlignment="Left" Margin="31,332,0,0" VerticalAlignment="Top" Height="60" FontWeight="Bold"/>
 
 
 

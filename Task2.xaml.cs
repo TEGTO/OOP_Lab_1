@@ -3,6 +3,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
+
+
 namespace OOP_Lab_1
 {
     /// <summary>
@@ -15,8 +17,8 @@ namespace OOP_Lab_1
     }
     public partial class Task2 : Window
     {
-       
-     
+
+      
         int checkBoxType = 0;
         public Task2()
         {
@@ -186,7 +188,7 @@ namespace OOP_Lab_1
             Triangle.FirstSide = Triangle.FirstSide > 20 ? 20 : Triangle.FirstSide;
             Triangle.SecondSide = Triangle.SecondSide > 20 ? 20 : Triangle.SecondSide;
             Triangle.ThirdSide = Triangle.ThirdSide > 20 ? 20 : Triangle.ThirdSide;
-
+            MainFigure.Points = new PointCollection() { new Point(0, 0), new Point(0, 0), new Point(0, 0) };
             switch (checkBoxType)
             {
                 case (int)CheckBoxTypes.Triangle:
@@ -304,6 +306,8 @@ namespace OOP_Lab_1
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+           
+        
             switch (checkBoxType)
             {
                 case (int)CheckBoxTypes.Triangle:
@@ -324,8 +328,8 @@ namespace OOP_Lab_1
                     labelS.Content = $"S = {Triangle.Area()}";
                     FigureTypePrint(Triangle.DefineType());
                     DrawFigure(Triangle.DefineType());
-                  
                     break;
+
 
                 case (int)CheckBoxTypes.Quadrilateral:
                     try

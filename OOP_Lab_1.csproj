@@ -9,10 +9,18 @@
 
   <ItemGroup>
     <None Remove="Screenshot_5.png" />
+    <None Remove="smiling.gif" />
+    <None Remove="Thanks For Attention.gif" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="XamlAnimatedGif" Version="2.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Thanks For Attention.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
